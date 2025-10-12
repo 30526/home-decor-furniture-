@@ -1,9 +1,11 @@
 import React from 'react';
-import { useLoaderData } from 'react-router';
+import { Link } from 'react-router';
 import Product from '../../components/Product/Product';
+import useProducts from '../../hooks/useProducts';
 
 const Home = () => {
-    const products = useLoaderData();
+    const data = useProducts()
+    const { products, loading, error } = data;
     const featuredProduct = products.slice(0, 8)
     return (
         <div>
@@ -18,6 +20,14 @@ const Home = () => {
                                 key={product.id}
                                 product={product}></Product>)
                 }
+            </div>
+            <div className='text-center  mt-10'>
+                <Link
+                    className="btn bg-linear-to-br from-[#632EE3] to-[#9F62F2] border-none
+                             rounded-lg text-white font-semibold px-10"
+                    to={"/products"}>
+                    View All
+                </Link>
             </div>
         </div>
     );
