@@ -1,6 +1,9 @@
 import React from 'react';
 import Container from '../Container/Container';
-import { Link } from 'react-router';
+import { Link, NavLink } from 'react-router';
+import { FaShop } from "react-icons/fa6";
+
+
 
 const Navbar = () => {
     const homeLink = <Link to={'/'}><li>Home</li></Link>
@@ -17,11 +20,8 @@ const Navbar = () => {
                                 tabIndex={0}
                                 className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
                                 {homeLink}
-                                <li><a href="">FAQ</a></li>
-                                <li><a href="">Changelog</a></li>
-                                <li><a href="">Blog</a></li>
-                                <li><a href="">Download</a></li>
-                                <li><a href="">Contact</a></li>
+                                <li><NavLink>Products</NavLink></li>
+                                <li><NavLink>Wish List</NavLink></li>
                             </ul>
                         </div>
                         <div className='flex items-center hover:cursor-pointer'>
@@ -34,17 +34,19 @@ const Navbar = () => {
                         <div className='mr-4 hidden md:block'>
                             <ul className="px-1 flex gap-4">
                                 {homeLink}
-                                <li><a href="">FAQ</a></li>
-                                <li><a href="">Changelog</a></li>
-                                <li><a href="">Blog</a></li>
-                                <li><a href="">Download</a></li>
-                                <li><a href="">Contact</a></li>
+                                <li><NavLink to={"/products"}>Products</NavLink></li>
+                                <li><NavLink to={"/wishList"}>Wish List</NavLink></li>
                             </ul>
                         </div>
 
                         <div className="navbar-end w-fit">
-                            <a className="btn bg-linear-to-br from-[#632EE3] to-[#9F62F2] border-none
-                             rounded-lg text-white font-semibold"><span></span> New Ticket</a>
+                            <NavLink
+                                className="btn bg-linear-to-br from-[#632EE3] to-[#9F62F2] border-none
+                             rounded-lg text-white font-semibold"
+                                to={"/products"}>
+                                <span><FaShop></FaShop></span>
+                                Visit Shop
+                            </NavLink>
                         </div>
                     </div>
                 </div>
