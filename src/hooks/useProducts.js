@@ -12,6 +12,6 @@ const useProducts = () => {
             .catch(err => setError(err))
             .finally(() => setLoading(false))
     }, [])
-    return { products, loading, error }
+    return [products, loading, error]
 }
 export default useProducts;
