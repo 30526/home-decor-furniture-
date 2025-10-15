@@ -18,6 +18,13 @@ const WishList = () => {
         }
     )();
 
+    const handleRemoveBtn = (id) => {
+        const getSavedData = JSON.parse(localStorage.getItem('wishList'));
+        const updatedData = getSavedData.filter(data => data.id !== id);
+        localStorage.setItem('wishList', JSON.stringify(updatedData))
+        setGetItem(updatedData);
+    }
+
     useEffect(() => {
         const getStorageItem = JSON.parse(localStorage.getItem('wishList'));
         if (getStorageItem) setGetItem(getStorageItem);
@@ -52,7 +59,9 @@ const WishList = () => {
                                     <p className='mt-2 text-gray-800 font-medium'>Price: ${wish.price}</p>
                                 </div>
                             </div>
-                            <button className='btn btn-outline'>Remove</button>
+                            <button
+                                onClick={() => handleRemoveBtn(wish.id)}
+                                className='btn btn-outline'>Remove</button>
                         </div>
                     )}
             </div>
