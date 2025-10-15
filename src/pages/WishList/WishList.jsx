@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react';
 
 const WishList = () => {
     const [getItem, setGetItem] = useState([]);
-    const getStorageItem = JSON.parse(localStorage.getItem('wishList'));
+
     useEffect(() => {
-        setGetItem(getStorageItem)
+        const getStorageItem = JSON.parse(localStorage.getItem('wishList'));
+        if (getStorageItem) setGetItem(getStorageItem);
     }, [])
     return (
         <div>
