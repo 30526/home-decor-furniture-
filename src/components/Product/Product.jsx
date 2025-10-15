@@ -1,11 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 const Product = ({ product }) => {
     const { id, name, category, price, material, dimensions, stock, image, description } = product;
     return (
         <div className="card bg-base-100 shadow-sm h-full hover:scale-101 cursor-pointer transition-transform ease-in duration-100">
             <figure className='object-cover h-fit w-full max-h-75'>
-                <img 
+                <img
                     src={image}
                     alt="Shoes" />
             </figure>
@@ -13,7 +14,9 @@ const Product = ({ product }) => {
                 <h2 className="card-title">{name}</h2>
                 <p>{description}</p>
                 <div className="card-actions justify-end">
-                    <button className="btn btn-primary">Buy Now</button>
+                    <Link
+                        to={`product/${id}`}
+                        className="btn btn-outline">View Details</Link>
                 </div>
             </div>
         </div>

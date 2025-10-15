@@ -7,7 +7,7 @@ const useProducts = () => {
     const [error, setError] = useState(null)
     useEffect(() => {
         setLoading(true);
-        axios('./fakeData.json')
+        axios('../fakeData.json')
             .then(data => setProducts(data.data))
             .catch(err => setError(err))
             .finally(() => setLoading(false))

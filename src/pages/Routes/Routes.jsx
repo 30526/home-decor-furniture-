@@ -6,6 +6,7 @@ import Error from '../../components/Error/Error';
 import Error2 from '../../components/Error/Error2';
 import Products from '../Products/Products';
 import WishList from '../WishList/WishList';
+import ProductDetails from '../ProductDetails/ProductDetails';
 
 
 const router = createBrowserRouter([
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
             {
                 path: "/products",
                 element: <Products></Products>
+            },
+            {
+                path: 'product/:id',
+                element: <ProductDetails></ProductDetails>
             },
             {
                 path: 'wishList',
