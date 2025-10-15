@@ -4,17 +4,19 @@ const WishList = () => {
     const [getItem, setGetItem] = useState([]);
     const [sort, setSort] = useState('none');
 
-    const sortedItem = () => {
-        if (sort === 'asc') {
-            return [...getItem].sort((a, b) => a.price - b.price);
+    const sortedItem = (
+        () => {
+            if (sort === 'asc') {
+                return [...getItem].sort((a, b) => a.price - b.price);
+            }
+            else if (sort === 'dsc') {
+                return [...getItem].sort((a, b) => b.price - a.price);
+            }
+            else {
+                return getItem;
+            }
         }
-        else if (sort === 'dsc') {
-            return [...getItem].sort((a, b) => b.price - a.price);
-        }
-        else {
-            return getItem;
-        }
-    }
+    )();
 
     useEffect(() => {
         const getStorageItem = JSON.parse(localStorage.getItem('wishList'));
@@ -39,7 +41,7 @@ const WishList = () => {
             </div>
             <div className='mt-10 flex flex-col gap-4'>
                 {
-                    sortedItem().map(wish =>
+                    sortedItem.map(wish =>
                         <div key={wish.id} className='flex justify-between items-center p-4 shadow-2xs border-2 border-gray-100 rounded-2xl'>
                             <div className='flex gap-4'>
                                 <img className='w-fit h-35 rounded-2xl' src={wish.image} alt="" />
