@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Charts from '../../components/Charts/Charts';
 
 const WishList = () => {
     const [getItem, setGetItem] = useState([]);
@@ -17,7 +18,6 @@ const WishList = () => {
             }
         }
     )();
-
     const handleRemoveBtn = (id) => {
         const getSavedData = JSON.parse(localStorage.getItem('wishList'));
         const updatedData = getSavedData.filter(data => data.id !== id);
@@ -65,6 +65,7 @@ const WishList = () => {
                         </div>
                     )}
             </div>
+            <Charts  getItem={getItem}></Charts>
         </div >
     );
 };
