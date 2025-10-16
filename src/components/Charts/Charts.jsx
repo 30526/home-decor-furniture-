@@ -16,6 +16,8 @@ const Charts = ({ getItem }) => {
         total: totalByCategory[category]
     }))
 
+    if (getItem.length === 0) return <p className='text-center text-4xl font-bold mt-30'>No product selected</p>
+
     return (
         <div className='mt-40'>
             <h4 className='my-10 text-center text-2xl font-bold'>WIsh List Summary</h4>

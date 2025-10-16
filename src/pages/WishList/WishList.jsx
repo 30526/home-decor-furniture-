@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Charts from '../../components/Charts/Charts';
+import { loadWishList } from '../../components/Utils/localStorage';
 
 const WishList = () => {
-    const [getItem, setGetItem] = useState([]);
+    const [getItem, setGetItem] = useState(() => loadWishList());
     const [sort, setSort] = useState('none');
 
     const sortedItem = (
@@ -25,10 +26,6 @@ const WishList = () => {
         setGetItem(updatedData);
     }
 
-    useEffect(() => {
-        const getStorageItem = JSON.parse(localStorage.getItem('wishList'));
-        if (getStorageItem) setGetItem(getStorageItem);
-    }, [])
     return (
         <div>
             <div className='flex justify-between items-center mb-10'>
@@ -65,7 +62,7 @@ const WishList = () => {
                         </div>
                     )}
             </div>
-            <Charts  getItem={getItem}></Charts>
+            <Charts getItem={getItem}></Charts>
         </div >
     );
 };
