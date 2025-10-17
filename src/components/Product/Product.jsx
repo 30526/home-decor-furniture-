@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 
 const Product = ({ product }) => {
-    const { id, name, category, price, material, dimensions, stock, image, description } = product;
+    const { id, name, image, description } = product;
     return (
         <div className="card bg-base-100 shadow-sm h-full hover:scale-101 cursor-pointer transition-transform ease-in duration-100">
             <figure className='object-cover h-fit w-full max-h-75'>
