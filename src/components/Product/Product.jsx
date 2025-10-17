@@ -15,7 +15,7 @@ const Product = ({ product }) => {
                 <p>{description}</p>
                 <div className="card-actions justify-end">
                     <Link
-                        to={`product/${id}`}
+                        to={`/product/${id}`}
                         className="btn btn-outline">View Details</Link>
                 </div>
             </div>
