@@ -4,6 +4,7 @@ import Product from '../../components/Product/Product';
 import useProducts from '../../hooks/useProducts';
 import SkeletonLoader from '../../components/SkeletonLoader/SkeletonLoader';
 
+
 const Home = () => {
     const data = useProducts()
     const [products, loading] = data;
