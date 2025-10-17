@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useParams } from 'react-router';
 import useProducts from '../../hooks/useProducts';
+import { updateList } from '../../components/Utils/localStorage';
 
 
 const ProductDetails = () => {
@@ -11,23 +12,6 @@ const ProductDetails = () => {
     if (loading) return <p>Loading.....</p>;
     const { name, image, description, price, category } = product;
 
-    const handleAddToWishList = () => {
-
-        const getItem = JSON.parse(localStorage.getItem('wishList'));
-        let updatedList = [];
-
-        if (getItem) {
-            const isExist = getItem.some(p => p.id === product.id);
-            if (isExist) return alert('Already added to the Wish List')
-            updatedList = [...getItem, product]
-        }
-        else {
-            updatedList.push(product)
-        }
-
-        const productSTR = JSON.stringify(updatedList)
-        localStorage.setItem('wishList', productSTR)
-    }
 
     return (
         <div>
@@ -48,7 +32,7 @@ const ProductDetails = () => {
                     <p> Category: {category}</p>
                     <div className="card-actions justify-end">
                         <Link
-                            onClick={handleAddToWishList}
+                            onClick={() => updateList(product)}
                             className="btn btn-outline">Add to WishList</Link>
                     </div>
                 </div>

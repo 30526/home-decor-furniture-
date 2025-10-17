@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Charts from '../../components/Charts/Charts';
-import { loadWishList } from '../../components/Utils/localStorage';
+import { loadWishList, removeListItem } from '../../components/Utils/localStorage';
 
 const WishList = () => {
     const [getItem, setGetItem] = useState(() => loadWishList());
@@ -20,10 +20,8 @@ const WishList = () => {
         }
     )();
     const handleRemoveBtn = (id) => {
-        const getSavedData = JSON.parse(localStorage.getItem('wishList'));
-        const updatedData = getSavedData.filter(data => data.id !== id);
-        localStorage.setItem('wishList', JSON.stringify(updatedData))
-        setGetItem(updatedData);
+        removeListItem(id);
+        setGetItem(prev => prev.filter(p => p.id !== id));
     }
 
     return (
